@@ -29,14 +29,8 @@ resource "vsphere_virtual_machine" "vm" {
         domain    = "home"
       }
 
-      network_interface {
-        ipv4_address = "${var.ip_address_base}${var.octet + count.index}"
-        ipv4_netmask = 24
-      }
+      network_interface {}
 
-      dns_server_list = ["192.168.1.254"]
-      dns_suffix_list = ["home"]
-      ipv4_gateway    = "192.168.1.254"
     }
   }
 
