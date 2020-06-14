@@ -1,6 +1,6 @@
 terraform {
   backend "local" {
-    path = "/mnt/nfs-drive-1/tf-centos-bkagent-vsphere/terraform.tfstate"
+    path = "/mnt/tf-centos-bkagent-vsphere/terraform.tfstate"
   }
 }
 
