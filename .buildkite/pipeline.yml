@@ -2,13 +2,16 @@ steps:
 
   - label: ":bowtie: :github: Read credentials"
     command: wget http://192.168.1.30:8000/scripts/terraform_vcenter_cred.sh -O /tmp/terraform_vcenter_cred.sh && chmod u+x /tmp/terraform_vcenter_cred.sh
+    agents:
+      home: "true"
 
   - wait
 
   - label: ":rage3: :terraform: Destroy VM"
     command: . /tmp/terraform_vcenter_cred.sh && terraform init && terraform destroy -input=false -var template_name=centos-buildkite-agent -var vm_name=centos-buildkite-agent -var vsphere_datastore=esx-nfs-1 -auto-approve
     agents:
-      master: "true"
+      home: "true"
+      docker: "true"
 
   - wait
 
@@ -16,3 +19,4 @@ steps:
     command: . /tmp/terraform_vcenter_cred.sh && terraform init && terraform apply -input=false -var template_name=centos-buildkite-agent -var vm_name=centos-buildkite-agent -var vsphere_datastore=esx-nfs-1 -auto-approve
     agents:
       home: "true"
+      docker: "true"
