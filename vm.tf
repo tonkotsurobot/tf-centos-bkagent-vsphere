@@ -37,6 +37,8 @@ resource "vsphere_virtual_machine" "vm" {
 
       network_interface {}
 
+      dns_server_list = ["192.168.1.20"]
+      dns_suffix_list = ["home"]
     }
   }
 
