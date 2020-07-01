@@ -6,6 +6,6 @@ variable "template_name" {}
 variable "vm_name" {}
 variable "vsphere_datastore" {}
 variable "vmcount" {
-  default = "1"
+  default = "2"
 }
 variable "vsphere_cluster" {}
